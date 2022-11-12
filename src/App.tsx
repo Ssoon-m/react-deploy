@@ -14,7 +14,7 @@ function App() {
           target='_blank'
           rel='noopener noreferrer'
         >
-          SOOOOOON MIN
+          SOOOOOON MIN[Invalidate 테스트]
         </a>
       </header>
     </div>

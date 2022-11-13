@@ -35,7 +35,6 @@ jobs:
         run: yarn build
 
       - name: S3 Deploy
-        env:          
         # 현재 build된 폴더에 접근 후 s3 버킷인 soon-sample-deploy에 파일 업로드
         # --acl bucket-owner-full-control 이 뭔지 알아보기
         run: aws s3 sync ./build s3://soon-sample-deploy/ --acl bucket-owner-full-control

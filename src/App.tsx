@@ -16,6 +16,7 @@ function App() {
         >
           workflow test
         </a>
+        <div>cloudfont cash invalidate test</div>
       </header>
     </div>
   );

@@ -17,6 +17,7 @@ function App() {
           workflow test
         </a>
         <div>cloudfont cash invalidate test</div>
+        <div>{process.env.REACT_APP_ENV_TEST}</div>
       </header>
     </div>
   );

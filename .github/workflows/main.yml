@@ -32,7 +32,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build
+        run: yarn build:dev
 
       - name: S3 Deploy
         # 현재 build된 폴더에 접근 후 s3 버킷인 soon-sample-deploy에 파일 업로드

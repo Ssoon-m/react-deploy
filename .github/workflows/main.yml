@@ -18,7 +18,10 @@ jobs:
       # 해당 레포지토리로 check-out 하여
       # 레포지토리에 접근할 수 있는 Action을 불러온다.    
       - name: Checkout source code
-        uses: actions/checkout@v2 # workflow에서 액세스할 수 있도록 저장소를 체크아웃
+      # checkout@v2 는 node12 에서 실행하는 workflow이다.
+      # checkout@v3로 바꿔줘야 한다. (node 16)
+      # https://github.blog/changelog/2022-09-22-github-actions-all-actions-will-begin-running-on-node16-instead-of-node12/
+        uses: actions/checkout@v3 # workflow에서 액세스할 수 있도록 저장소를 체크아웃 
       
       - name: Install dependencies
         run: yarn install
@@ -29,7 +32,7 @@ jobs:
       - name: S3 Deploy
         # 현재 build된 폴더에 접근 후 s3 버킷인 soon-sample-deploy에 파일 업로드
         # --acl bucket-owner-full-control 이 뭔지 알아보기
-        run: aws s3 sync ./build s3://soon-sample-deploy --profile=sample-deploy-s3 
+        run: aws s3 sync ./build s3://soon-sample-deploy/ --acl bucket-owner-full-control
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

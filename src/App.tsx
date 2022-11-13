@@ -3,20 +3,33 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const error = () => {
+    throw new Error('foo error');
+  };
+  const foo = () => {
+    try {
+      error();
+    } catch (e) {
+      console.log('foo >>> ', e);
+    }
+  };
+  const bar = () => {
+    try {
+      error();
+    } catch (e) {
+      console.log('bar >>> ', e);
+    }
+  };
   return (
     <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>리액트 프로젝트 S3 + CloudFront 배포</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          SOOOOOON MIN[Invalidate 테스트]
-        </a>
-      </header>
+      <button
+        onClick={() => {
+          foo();
+          bar();
+        }}
+      >
+        버튼
+      </button>
     </div>
   );
 }
